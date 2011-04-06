@@ -11,8 +11,14 @@ TEMPLATE = app
 
 
 SOURCES += main.cpp\
-        mainwindow.cpp
+        mainwindow.cpp \
+    graphobject.cpp \
+    connector.cpp \
+    graphshape.cpp
 
-HEADERS  += mainwindow.h
+HEADERS  += mainwindow.h \
+    graphobject.h \
+    connector.h \
+    graphshape.h
 
 FORMS    += mainwindow.ui
