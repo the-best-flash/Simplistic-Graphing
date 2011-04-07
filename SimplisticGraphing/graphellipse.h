@@ -9,7 +9,7 @@ class GraphEllipse : public QGraphicsEllipseItem, GraphShape
 {
     Q_OBJECT
 public:
-    explicit GraphEllipse(QObject *parent = 0);
+    explicit GraphEllipse(QGraphicsScene* scene, QObject *parent = 0);
 
     void Save(ofstream &fout);
     void Load(ifstream &fin);

@@ -7,7 +7,7 @@ class GraphDiamond : public GraphRectangle
 {
     Q_OBJECT
 public:
-    explicit GraphDiamond(QObject *parent = 0);
+    explicit GraphDiamond(QGraphicsScene* scene, QObject *parent = 0);
 
 signals:
 

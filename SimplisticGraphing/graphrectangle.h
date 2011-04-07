@@ -9,7 +9,7 @@ class GraphRectangle : public QGraphicsRectItem, GraphShape
 {
     Q_OBJECT
 public:
-    explicit GraphRectangle(QObject *parent = 0);
+    explicit GraphRectangle(QGraphicsScene* scene, QObject *parent = 0);
 
     void Save(ofstream &fout);
     void Load(ifstream &fin);

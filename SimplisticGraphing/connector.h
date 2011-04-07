@@ -2,6 +2,7 @@
 #define CONNECTOR_H
 
 #include <QGraphicsItem>
+#include <QGraphicsScene>
 
 #include "graphobject.h"
 #include "idmanager.h"
@@ -10,8 +11,8 @@ class Connector : public QGraphicsItem, GraphObject
 {
     Q_OBJECT
 public:
-    explicit Connector(IdManager* idMan, QObject *parent = 0);
-    Connector(ifstream &fin, IdManager* idMan, QObject *parent = 0);
+    explicit Connector(QGraphicsScene* scene, IdManager* idMan, QObject *parent = 0);
+    Connector(QGraphicsScene* scene, ifstream &fin, IdManager* idMan, QObject *parent = 0);
     Connector(Connector& c);
 
     void Save(ofstream &fout);
@@ -21,7 +22,7 @@ signals:
 
 public slots:
 
-private:
+protected:
     int id;
     IdManager* idMan;
 };

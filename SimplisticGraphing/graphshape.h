@@ -7,9 +7,9 @@
 class GraphShape : public GraphObject
 {
 public:
-    GraphShape();
+    GraphShape(QGraphicsScene* scene);
     GraphShape(GraphShape &s);
-    GraphShape(ifstream &fin);
+    GraphShape(QGraphicsScene* scene, ifstream &fin);
 
     void Save(ofstream &fout);
     void Load(ifstream &fin);

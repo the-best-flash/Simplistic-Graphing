@@ -8,7 +8,7 @@ class GraphTextbox : public QGraphicsTextItem, GraphShape
 {
     Q_OBJECT
 public:
-    explicit GraphTextbox(QObject *parent = 0);
+    explicit GraphTextbox(QGraphicsScene* scene, QObject *parent = 0);
 
     void Save(ofstream &fout);
     void Load(ifstream &fin);

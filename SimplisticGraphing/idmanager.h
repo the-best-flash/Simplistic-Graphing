@@ -10,6 +10,7 @@ public:
     IdManager();
 
     int GetID();
+    int CurID();
 
     void FreeID(int id);
     void UseID(int id);
