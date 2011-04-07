@@ -8,15 +8,16 @@ class GraphShape : public GraphObject
 {
 public:
     GraphShape();
+    GraphShape(GraphShape &s);
+    GraphShape(ifstream &fin);
 
-    void Save(ifstream &fin);
-    void Load(ofstream &fout);
+    void Save(ofstream &fout);
+    void Load(ifstream &fin);
 
     virtual void Connect(Connector* c);
 
 protected:
     int type;
-    vector<Connector*> connectors;
     vector<ConnectionPoint> connectionPts;
 };
 

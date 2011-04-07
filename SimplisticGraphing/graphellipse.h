@@ -11,8 +11,8 @@ class GraphEllipse : public QGraphicsEllipseItem, GraphShape
 public:
     explicit GraphEllipse(QObject *parent = 0);
 
-    void Save(ifstream &fin);
-    void Load(ofstream &fout);
+    void Save(ofstream &fout);
+    void Load(ifstream &fin);
 
 signals:
 

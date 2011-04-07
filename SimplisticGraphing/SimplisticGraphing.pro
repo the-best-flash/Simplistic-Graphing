@@ -21,7 +21,8 @@ SOURCES += main.cpp\
     graphellipse.cpp \
     graphdiamond.cpp \
     graphrectangle.cpp \
-    graphtextbox.cpp
+    graphtextbox.cpp \
+    connectionmanager.cpp
 
 HEADERS  += mainwindow.h \
     graphobject.h \
@@ -32,6 +33,7 @@ HEADERS  += mainwindow.h \
     graphellipse.h \
     graphdiamond.h \
     graphrectangle.h \
-    graphtextbox.h
+    graphtextbox.h \
+    connectionmanager.h
 
 FORMS    += mainwindow.ui

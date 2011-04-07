@@ -11,8 +11,8 @@ class GraphRectangle : public QGraphicsRectItem, GraphShape
 public:
     explicit GraphRectangle(QObject *parent = 0);
 
-    void Save(ifstream &fin);
-    void Load(ofstream &fout);
+    void Save(ofstream &fout);
+    void Load(ifstream &fin);
 
 signals:
 

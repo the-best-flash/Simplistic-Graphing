@@ -11,7 +11,11 @@ class Connector : public QGraphicsItem, GraphObject
     Q_OBJECT
 public:
     explicit Connector(IdManager* idMan, QObject *parent = 0);
+    Connector(ifstream &fin, IdManager* idMan, QObject *parent = 0);
     Connector(Connector& c);
+
+    void Save(ofstream &fout);
+    void Load(ifstream &fin);
 
 signals:
 
