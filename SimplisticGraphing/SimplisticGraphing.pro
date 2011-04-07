@@ -14,11 +14,24 @@ SOURCES += main.cpp\
         mainwindow.cpp \
     graphobject.cpp \
     connector.cpp \
-    graphshape.cpp
+    graphshape.cpp \
+    idmanager.cpp \
+    connectionpoint.cpp \
+    graphsquare.cpp \
+    graphellipse.cpp \
+    graphdiamond.cpp \
+    graphrectangle.cpp \
+    graphtextbox.cpp
 
 HEADERS  += mainwindow.h \
     graphobject.h \
     connector.h \
-    graphshape.h
+    graphshape.h \
+    idmanager.h \
+    connectionpoint.h \
+    graphellipse.h \
+    graphdiamond.h \
+    graphrectangle.h \
+    graphtextbox.h
 
 FORMS    += mainwindow.ui

@@ -3,16 +3,23 @@
 
 #include <QGraphicsItem>
 
-class Connector : public QGraphicsItem
+#include "graphobject.h"
+#include "idmanager.h"
+
+class Connector : public QGraphicsItem, GraphObject
 {
     Q_OBJECT
 public:
-    explicit Connector(QObject *parent = 0);
+    explicit Connector(IdManager* idMan, QObject *parent = 0);
+    Connector(Connector& c);
 
 signals:
 
 public slots:
 
+private:
+    int id;
+    IdManager* idMan;
 };
 
 #endif // CONNECTOR_H
