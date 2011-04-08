@@ -17,7 +17,7 @@ public:
     virtual void Connect(Connector* c);
 
 protected:
-    int type;
+    QGraphicsTextItem text;
     vector<ConnectionPoint> connectionPts;
 };
 

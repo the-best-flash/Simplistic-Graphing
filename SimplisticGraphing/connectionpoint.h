@@ -2,7 +2,7 @@
 #define CONNECTIONPOINT_H
 
 #include <QPointF>
-#include <vector>
+#include <list>
 #include "graphshape.h"
 #include "connector.h"
 
@@ -20,10 +20,14 @@ public:
     void Save(ofstream &fout);
     void Load(ifstream &fin);
 
+    void Disconnect(Connector* c);
+
 private:
     char dir;
-    vector<Connector*> connector;
+    list<Connector*> connector;
     GraphShape* parent;
+    QPointF offset;
+    bool standard;
 };
 
 #endif // CONNECTIONPOINT_H

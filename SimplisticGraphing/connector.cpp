@@ -17,3 +17,17 @@ Connector::Connector(QGraphicsScene* scene, ifstream &fin, IdManager* _idMan, QO
 {
     this->Load(fin);
 }
+
+void Connector::Save(ofstream &fout)
+{
+    GraphObject::Save(fout);
+
+    fout.write(&id, sizeof(int));
+}
+
+void Connector::Load(ifstream &fin)
+{
+    GraphObject::Load(fin);
+
+    fin.read(&id, sizeof(int));
+}

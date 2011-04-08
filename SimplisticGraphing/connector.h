@@ -6,6 +6,7 @@
 
 #include "graphobject.h"
 #include "idmanager.h"
+#include "connectionpoint.h"
 
 class Connector : public QGraphicsItem, GraphObject
 {
@@ -18,13 +19,21 @@ public:
     void Save(ofstream &fout);
     void Load(ifstream &fin);
 
+    void SetLeft(ConnectionPoint* left);
+    void SetRight(ConnectionPoint* right);
+
+    ConnectionPoint* Left();
+    ConnectionPoint* Right();
+
 signals:
 
 public slots:
 
 protected:
     int id;
+    QGraphicsTextItem text;
     IdManager* idMan;
+    ConnectionPoint* left, right;
 };
 
 #endif // CONNECTOR_H

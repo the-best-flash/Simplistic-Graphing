@@ -17,14 +17,13 @@ public:
     enum Type{RECTANGLE, ELLIPSE, DIAMOND, TEXT, CONNECTOR, OTHER};
 
     GraphObject(QGraphicsScene* scene);
-    GraphObject(QGraphicsScene* scene, ifstream &fin);
     GraphObject(GraphObject &obj);
 
     virtual void Save(ofstream &fout) = 0;
     virtual void Load(ifstream &fin) = 0;
 
 protected:
-    QGraphicsTextItem text;
+    int type;
     QGraphicsScene* scene;
 };
 

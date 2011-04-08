@@ -44,3 +44,10 @@ void ConnectionPoint::Load(ifstream &fin)
     fin.read(&_f, sizeof(float));
     this->setY(_f);
 }
+
+void ConnectionPoint::Disconnect(Connector* c)
+{
+    connector.remove(c);
+
+
+}
