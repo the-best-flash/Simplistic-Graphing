@@ -25,6 +25,8 @@ public:
     ConnectionPoint* Left();
     ConnectionPoint* Right();
 
+    int Id();
+
 signals:
 
 public slots:

@@ -30,6 +30,15 @@ void ConnectionPoint::Save(ofstream &fout)
 
     _f = this->y();
     fout.write(&_f, sizeof(float));
+
+    int _i = connector.size();
+    fout.write(&_i, sizeof(int));
+
+    for(list<Connector*>::iterator it = connector.begin(); it != connector.end(); it++)
+    {
+        _i = (*it)->Id();
+        fout.write(&_i, sizeof(int));
+    }
 }
 
 void ConnectionPoint::Load(ifstream &fin)
@@ -37,17 +46,35 @@ void ConnectionPoint::Load(ifstream &fin)
     fin.read(&dir, sizeof(char));
 
     float _f;
+    int _i;
 
     fin.read(&_f, sizeof(float));
     this->setX(_f);
 
     fin.read(&_f, sizeof(float));
     this->setY(_f);
+
+    fin.read(&_i, sizeof(int));
+
+    int size = _i;
+    for(int i = 0; i < size; i++)
+    {
+        fin.read(&_i, sizeof(int));
+
+        connector.push_back(man->GetConnector(_i));
+    }
 }
 
 void ConnectionPoint::Disconnect(Connector* c)
 {
     connector.remove(c);
 
+    if(c->Right() == this)
+    {
 
+    }
+    else if(c->Left() == this)
+    {
+
+    }
 }

@@ -31,3 +31,8 @@ void Connector::Load(ifstream &fin)
 
     fin.read(&id, sizeof(int));
 }
+
+int Connector::Id()
+{
+    return id;
+}

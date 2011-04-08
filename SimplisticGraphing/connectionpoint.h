@@ -5,6 +5,7 @@
 #include <list>
 #include "graphshape.h"
 #include "connector.h"
+#include "connectionmanager.h"
 
 class ConnectionPoint : public QPointF
 {
@@ -28,6 +29,7 @@ private:
     GraphShape* parent;
     QPointF offset;
     bool standard;
+    ConnectionManager* man;
 };
 
 #endif // CONNECTIONPOINT_H
