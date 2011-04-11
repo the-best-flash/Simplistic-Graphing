@@ -69,12 +69,22 @@ void ConnectionPoint::Disconnect(Connector* c)
 {
     connector.remove(c);
 
+    Connector* con = new Connector(c->scene(), man->GetIdManager(), NULL);
+
+    con->setX(this->xp);
+    con->setY(this->yp);
+
     if(c->Right() == this)
     {
-
+        c->SetRight(con);
     }
     else if(c->Left() == this)
     {
-
+        c->SetLeft(con);
     }
+}
+
+GraphShape* ConnectionPoint::Parent()
+{
+    return parent;
 }

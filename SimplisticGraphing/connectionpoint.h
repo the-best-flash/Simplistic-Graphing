@@ -23,6 +23,8 @@ public:
 
     void Disconnect(Connector* c);
 
+    GraphShape* Parent();
+
 private:
     char dir;
     list<Connector*> connector;
