@@ -1,25 +1,29 @@
 #ifndef IDMANAGER_H
 #define IDMANAGER_H
 
+#include "connector.h"
+
 #include <map>
 using namespace std;
 
 class IdManager
 {
 public:
-    IdManager();
+    IdManager(map<int, Connector*>* _connectors);
 
-    int GetID();
+    void AssignID(Connector* c);
     int CurID();
 
     void FreeID(int id);
-    void UseID(int id);
+    void UseID(int id, Connector* c);
     void SetID(int id);
 
     map<int, int> CompactIDs();
 
 private:
-    map<int, bool> used;
+    bool IsUsed(int id);
+
+    map<int, Connector*>* connectors;
     int curId;
 };
 

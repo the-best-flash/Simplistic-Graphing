@@ -22,6 +22,9 @@ public:
     void SetLeft(ConnectionPoint* left);
     void SetRight(ConnectionPoint* right);
 
+    void ChangeId(int id);
+    void SetId(int id);
+
     ConnectionPoint* Left();
     ConnectionPoint* Right();
 

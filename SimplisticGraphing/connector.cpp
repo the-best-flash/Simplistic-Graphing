@@ -3,13 +3,13 @@
 Connector::Connector(QGraphicsScene* _scene, IdManager* _idMan, QObject *parent = 0) :
         QGraphicsItem(parent), GraphObject(scene), idMan(_idMan), left(NULL), right(NULL)
 {
-    id = idMan->GetID();
+    idMan->AssignID(this);
 }
 
 Connector::Connector(Connector& c) :
         QGraphicsItem(c), GraphObject(c.scene), idMan(c.idMan), left(NULL), right(NULL)
 {
-    id = idMan->GetID();
+    idMan->AssignID(this);
 
     if(c.left != NULL && c.left->Parent() != NULL)
     {
@@ -20,6 +20,15 @@ Connector::Connector(Connector& c) :
     {
         c.right->Parent()->Connect(this);
     }
+}
+
+Connector::~Connector()
+{
+    if(left != NULL && left->Parent() == NULL)
+        delete left;
+
+    if(right != NULL && right->Parent() == NULL)
+        delete right;
 }
 
 Connector::Connector(QGraphicsScene* scene, ifstream &fin, IdManager* _idMan, QObject *parent = 0) :
@@ -40,6 +49,8 @@ void Connector::Load(ifstream &fin)
     GraphObject::Load(fin);
 
     fin.read(&id, sizeof(int));
+
+    idMan->UseID(id, this);
 }
 
 int Connector::Id()
@@ -73,3 +84,12 @@ ConnectionPoint* Connector::Right()
     return right;
 }
 
+void Connector::ChangeId(int _id)
+{
+    id = _id;
+}
+
+void Connector::SetId(int _id)
+{
+    id = _id;
+}

@@ -7,7 +7,7 @@
 #include "idmanager.h"
 
 #include <fstream>
-#include <vector>
+#include <map>
 using namespace std;
 
 class ConnectionManager
@@ -21,11 +21,14 @@ public:
 
     Connector* AddConnector();
     void DeleteConnector(int id);
+    void DeleteConnector(Connector* c);
 
     Connector* GetConnector(int id);
 
+    IdManager* GetIdManager();
+
 private:
-    vector<Connector*> connection;
+    map<int, Connector*> connection;
     IdManager idMan;
     QGraphicsScene* scene;
 };

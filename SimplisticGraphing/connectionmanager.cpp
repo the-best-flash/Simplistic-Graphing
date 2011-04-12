@@ -1,12 +1,12 @@
 #include "connectionmanager.h"
 
 ConnectionManager::ConnectionManager(QGraphicsScene* _scene) :
-        scene(_scene)
+        scene(_scene), idMan(&connection)
 {
 }
 
 ConnectionManager::ConnectionManager(QGraphicsScene* _scene, ifstream &fin) :
-        scene(_scene)
+        scene(_scene), idMan(&connection)
 {
     this->Load(fin);
 }
@@ -21,9 +21,9 @@ void ConnectionManager::Save(ofstream &fout)
     _i = connection.size();
     fout.write(&_i, sizeof(int));
 
-    for(vector<Connector*>::iterator it = connection.begin(); it != connection.end(); it++)
+    for(map<int, Connector*>::iterator it = connection.begin(); it != connection.end(); it++)
     {
-        (*it)->Save(fout);
+        (*it).second->Save(fout);
     }
 }
 
@@ -38,21 +38,35 @@ void ConnectionManager::Load(ifstream &fin)
 
     for(int i = 0; i < _i; i++)
     {
-        connection.push_back(new Connector(scene, fin, &idMan, scene));
+        new Connector(scene, fin, &idMan, scene);
     }
+}
+
+IdManager* ConnectionManager::GetIdManager()
+{
+    return this->idMan;
 }
 
 Connector* ConnectionManager::AddConnector()
 {
+    Connector* c = new Connector(scene, idMan, scene);
 
+    this->idMan.AssignID(c);
+
+    return c;
 }
 
 void ConnectionManager::DeleteConnector(int id)
 {
+    this->idMan.FreeID(id);
+}
 
+void ConnectionManager::DeleteConnector(Connector* c)
+{
+    this->idMan.FreeID(c->Id());
 }
 
 Connector* ConnectionManager::GetConnector(int id)
 {
-
+    return connection[id];
 }
